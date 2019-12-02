@@ -1,0 +1,11 @@
+[package]
+name = "crc-catalog"
+version = "0.1.0"
+authors = ["Akhil Velagapudi <akhilvelagapudi@gmail.com>"]
+edition = "2018"
+description = "Catalog of common CRC algorithms (subset of http://reveng.sourceforge.net/crc-catalogue) expressed as simple Rust structs"
+repository = "https://github.com/akhilles/crc-catalog.git"
+readme = "README.md"
+keywords = ["crc"]
+categories = ["no-std", "network-programming"]
+license = "MIT OR Apache-2.0"
