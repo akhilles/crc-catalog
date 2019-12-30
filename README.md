@@ -1,8 +1,7 @@
 # crc-catalog
 
 [![Crate](https://img.shields.io/crates/v/crc-catalog.svg)](https://crates.io/crates/crc-catalog)
-[![Docs](https://docs.rs/crc-catalog/badge.svg)](https://docs.rs/crc)
-[![License](https://img.shields.io/crates/l/crc-catalog.svg)](https://github.com/akhilles/crc-catalog#license)
+[![Docs](https://docs.rs/crc-catalog/badge.svg)](https://docs.rs/crc-catalog)
 
 Catalog of CRC algorithms expressed as simple Rust structs. The Rust code is generated from the "[Catalogue of parametrised CRC algorithms](http://reveng.sourceforge.net/crc-catalogue)" using the `generate_catalog.sh` script:
 
