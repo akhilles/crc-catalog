@@ -3,7 +3,7 @@
 mod catalog;
 pub use catalog::*;
 
-pub trait Width {}
+pub trait Width: Sized + 'static {}
 impl Width for u8 {}
 impl Width for u16 {}
 impl Width for u32 {}
