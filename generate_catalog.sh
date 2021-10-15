@@ -10,7 +10,16 @@ curl -s https://reveng.sourceforge.io/crc-catalogue/all.htm | grep -o 'width.*na
   width=$(echo $line | sed 's/width=\([0-9]*\) \(.*\) name="\(.*\)"/\1/')
   params=$(echo $line | sed 's/width=\([0-9]*\) \(.*\) name="\(.*\)"/\2/' | sed 's/ /, /g' | sed 's/=/: /g')
   name=$(echo $line | sed 's/width=\([0-9]*\) \(.*\) name="\(.*\)"/\3/' | sed 's/[-\/]/_/g')
-  if [ $width -eq 8 ] || [ $width -eq 16 ] || [ $width -eq 32 ] || [ $width -eq 64 ]; then
-    echo "pub const $name: Algorithm<u$width> = Algorithm { $params };"
+
+  if [ $width -le 8 ]; then
+    echo "pub const $name: Algorithm<u8> = Algorithm { width: $width, $params };"
+  elif [ $width -le 16 ]; then
+    echo "pub const $name: Algorithm<u16> = Algorithm { width: $width, $params };"
+  elif [ $width -le 32 ]; then
+    echo "pub const $name: Algorithm<u32> = Algorithm { width: $width, $params };"
+  elif [ $width -le 64 ]; then
+    echo "pub const $name: Algorithm<u64> = Algorithm { width: $width, $params };"
+  elif [ $width -le 128 ]; then
+    echo "pub const $name: Algorithm<u128> = Algorithm { width: $width, $params };"
   fi
 done
