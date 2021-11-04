@@ -1,5 +1,6 @@
 # crc-catalog
 
+[![rust](https://github.com/akhilles/crc-catalog/actions/workflows/rust.yaml/badge.svg)](https://github.com/akhilles/crc-catalog/actions/workflows/rust.yaml)
 [![Crate](https://img.shields.io/crates/v/crc-catalog.svg)](https://crates.io/crates/crc-catalog)
 [![Docs](https://docs.rs/crc-catalog/badge.svg)](https://docs.rs/crc-catalog)
 
