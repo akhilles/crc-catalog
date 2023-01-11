@@ -97,6 +97,7 @@ pub const CRC_32_BASE91_D: Algorithm<u32> = Algorithm { width: 32, poly: 0xa8339
 pub const CRC_32_BZIP2: Algorithm<u32> = Algorithm { width: 32, poly: 0x04c11db7, init: 0xffffffff, refin: false, refout: false, xorout: 0xffffffff, check: 0xfc891918, residue: 0xc704dd7b };
 pub const CRC_32_CD_ROM_EDC: Algorithm<u32> = Algorithm { width: 32, poly: 0x8001801b, init: 0x00000000, refin: true, refout: true, xorout: 0x00000000, check: 0x6ec2edc4, residue: 0x00000000 };
 pub const CRC_32_CKSUM: Algorithm<u32> = Algorithm { width: 32, poly: 0x04c11db7, init: 0x00000000, refin: false, refout: false, xorout: 0xffffffff, check: 0x765e7680, residue: 0xc704dd7b };
+pub const CRC_32_IEEE: Algorithm<u32> = CRC_32_ISO_HDLC;
 pub const CRC_32_ISCSI: Algorithm<u32> = Algorithm { width: 32, poly: 0x1edc6f41, init: 0xffffffff, refin: true, refout: true, xorout: 0xffffffff, check: 0xe3069283, residue: 0xb798b438 };
 pub const CRC_32_ISO_HDLC: Algorithm<u32> = Algorithm { width: 32, poly: 0x04c11db7, init: 0xffffffff, refin: true, refout: true, xorout: 0xffffffff, check: 0xcbf43926, residue: 0xdebb20e3 };
 pub const CRC_32_JAMCRC: Algorithm<u32> = Algorithm { width: 32, poly: 0x04c11db7, init: 0xffffffff, refin: true, refout: true, xorout: 0x00000000, check: 0x340bc6d9, residue: 0x00000000 };
