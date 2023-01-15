@@ -2,6 +2,7 @@
 
 #[rustfmt::skip]
 mod catalog;
+pub mod poly;
 pub use catalog::*;
 
 pub trait Width: Sized + 'static {}
