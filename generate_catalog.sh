@@ -1,5 +1,6 @@
 #!/bin/sh
 
+echo "//! CRC algorithms as structs."
 echo "use crate::Algorithm;"
 curl -s https://reveng.sourceforge.io/crc-catalogue/all.htm | grep -o 'width.*name.*"' | while read -r line; do
   # echo $(echo $line | \

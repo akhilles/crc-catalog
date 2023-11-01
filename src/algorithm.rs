@@ -1,3 +1,4 @@
+//! CRC algorithms as structs.
 use crate::Algorithm;
 pub const CRC_3_GSM: Algorithm<u8> = Algorithm { width: 3, poly: 0x3, init: 0x0, refin: false, refout: false, xorout: 0x7, check: 0x4, residue: 0x2 };
 pub const CRC_3_ROHC: Algorithm<u8> = Algorithm { width: 3, poly: 0x3, init: 0x7, refin: true, refout: true, xorout: 0x0, check: 0x6, residue: 0x0 };
