@@ -15,6 +15,7 @@ impl Width for u128 {}
 
 /// This struct describes a CRC algorithm using the fields specified by the [Catalogue of
 /// parametrised CRC algorithms](https://reveng.sourceforge.io/crc-catalogue/all.htm).
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct Algorithm<W: Width> {
     /// The number of bit cells in the linear feedback shift register; the degree of the generator
     /// polynomial, minus one.
@@ -57,3 +58,6 @@ pub struct Algorithm<W: Width> {
     /// the codeword.
     pub residue: W,
 }
+
+#[cfg(test)]
+mod tests;
