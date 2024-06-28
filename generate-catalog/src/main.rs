@@ -3,34 +3,43 @@ use std::{fs::File, io::{BufWriter, Write}, path::PathBuf, str::FromStr};
 use color_eyre::eyre::{eyre, Error, OptionExt};
 use ego_tree::iter::NextSiblings;
 use lazy_static::lazy_static;
+use pico_args::Arguments;
 use scraper::{ElementRef, Html, Node, Selector};
-use structopt::StructOpt;
 use regex::Regex;
 
 pub const CATALOG_URL: &'static str = "https://reveng.sourceforge.io/crc-catalogue/all.htm";
 
-#[derive(Debug, StructOpt)]
+#[derive(Debug)]
 struct Args {
-    #[structopt(short, long)]
     url: Option<String>,
-
-    #[structopt(short, long)]
     output: Option<PathBuf>,
 }
 
-#[tokio::main]
-async fn main() -> Result<(), Error> {
-    let args = Args::from_args();
+impl Args {
+    pub fn from_env() -> Result<Self, Error> {
+        let mut args = Arguments::from_env();
+        let output = args.opt_value_from_str(["-o", "--output"])?;
+        let url = args.opt_free_from_str()?;
+        Ok(Self {
+            url,
+            output,
+        })
+    }
+}
 
-    let mut writer = if let Some(output) = &args.output {
-        Box::new(BufWriter::new(File::create(output)?)) as Box<dyn Write>
+fn main() -> Result<(), Error> {
+    let args = Args::from_env()?;
+
+    let writer = if let Some(output) = &args.output {
+        Box::new(File::create(output)?) as Box<dyn Write>
     }
     else {
         Box::new(std::io::stdout())
     };
+    let mut writer = BufWriter::new(writer);
 
     let url = args.url.as_deref().unwrap_or(CATALOG_URL);
-    let html = reqwest::get(url).await?.text().await?;
+    let html = ureq::get(url).call()?.into_string()?;
     let html = Html::parse_document(&html);
 
     let h3_selector = Selector::parse("h3").unwrap();

@@ -8,8 +8,7 @@ publish = false
 color-eyre = "0.6.3"
 ego-tree = "0.6.2"
 lazy_static = "1.5.0"
+pico-args = "0.5.0"
 regex = "1.10.5"
-reqwest = "0.12.5"
 scraper = "0.19.0"
-structopt = "0.3.26"
-tokio = { version = "1.38.0", features = ["macros", "rt-multi-thread"] }
+ureq = "2.9.7"
