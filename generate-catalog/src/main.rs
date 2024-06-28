@@ -1,4 +1,4 @@
-use std::{fs::File, io::{BufWriter, Write}, path::PathBuf, str::FromStr};
+use std::{borrow::Cow, fs::File, io::{BufWriter, Write}, path::PathBuf, str::FromStr};
 
 use color_eyre::eyre::{eyre, Error, OptionExt};
 use ego_tree::iter::NextSiblings;
@@ -16,19 +16,25 @@ struct Args {
 }
 
 impl Args {
-    pub fn from_env() -> Result<Self, Error> {
+    pub fn from_env() -> Result<Option<Self>, Error> {
         let mut args = Arguments::from_env();
+        if args.contains(["-h", "--help"]) {
+            println!("USAGE: {} [-o FILE] [URL]", std::env::args().next().map(Cow::Owned).unwrap_or_else(|| "generate-catalog".into()));
+            return Ok(None);
+        }
+
         let output = args.opt_value_from_str(["-o", "--output"])?;
         let url = args.opt_free_from_str()?;
-        Ok(Self {
+
+        Ok(Some(Self {
             url,
             output,
-        })
+        }))
     }
 }
 
 fn main() -> Result<(), Error> {
-    let args = Args::from_env()?;
+    let Some(args) = Args::from_env()? else { return Ok(()); };
 
     let writer = if let Some(output) = &args.output {
         Box::new(File::create(output)?) as Box<dyn Write>
