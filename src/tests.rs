@@ -1,5 +1,4 @@
 #![allow(non_snake_case)]
-#![rustfmt::skip]
 use crate::Algorithm;
 #[test]
 fn test_CRC_3_GSM() {
