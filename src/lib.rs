@@ -60,4 +60,5 @@ pub struct Algorithm<W: Width> {
 }
 
 #[cfg(test)]
+#[rustfmt::skip]
 mod tests;

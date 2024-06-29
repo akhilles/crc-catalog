@@ -1,7 +1,6 @@
 #!/bin/sh
 
 echo "#![allow(non_snake_case)]"
-echo "#![rustfmt::skip]"
 echo "use crate::Algorithm;"
 
 curl -s https://reveng.sourceforge.io/crc-catalogue/all.htm | grep -o 'width.*name.*"' | while read -r line; do
