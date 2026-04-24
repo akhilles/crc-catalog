@@ -5,10 +5,6 @@ edition = "2021"
 publish = false
 
 [dependencies]
-color-eyre = "0.6.3"
-ego-tree = "0.6.2"
-lazy_static = "1.5.0"
-pico-args = "0.5.0"
-regex = "1.10.5"
-scraper = "0.19.0"
-ureq = "2.9.7"
+shlex = "1.3.0"
+tl = "0.7.8"
+ureq = { version = "3.3.0", default-features = false, features = ["native-tls"] }
