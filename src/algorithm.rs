@@ -2485,6 +2485,29 @@ pub const CRC_64_MS: Algorithm<u64> = Algorithm {
     residue: 0x0
 };
 
+/// # [`CRC-64/NVME`][1]
+///
+/// - `width`: `64` bits
+/// - `poly`: `0xad93d23594c93659` (reversed: `0x9a6c9329ac4bc9b5`)
+/// - `init`: `0xffffffffffffffff`
+/// - `refin`: `true`
+/// - `refout`: `true`
+/// - `xorout`: `0xffffffffffffffff`
+/// - `check`: `0xae8b14860a799888`
+/// - `residue`: `0xf310303b2b6f6e42`
+///
+/// [1]: https://reveng.sourceforge.io/crc-catalogue/all.htm#crc.cat.crc-64-nvme
+pub const CRC_64_NVME: Algorithm<u64> = Algorithm {
+    width: 64,
+    poly: 0xad93d23594c93659,
+    init: 0xffffffffffffffff,
+    refin: true,
+    refout: true,
+    xorout: 0xffffffffffffffff,
+    check: 0xae8b14860a799888,
+    residue: 0xf310303b2b6f6e42
+};
+
 /// # [`CRC-64/REDIS`][1]
 ///
 /// - `width`: `64` bits
